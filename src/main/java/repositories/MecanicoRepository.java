@@ -1,5 +1,5 @@
 
-package com.Jonas.AppWebOficina;
+package repositories;
 
 import com.Jonas.AppWebOficina.domain.Mecanico;
 import org.springframework.data.jpa.repository.JpaRepository;
