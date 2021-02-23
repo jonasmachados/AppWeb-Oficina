@@ -1,7 +1,9 @@
 package com.Jonas.AppWebOficina.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -34,21 +37,25 @@ public class Servico implements Serializable {
     @ManyToOne //Anotacao para associacao
     @JoinColumn(name = "carroId")
     private Carro carro;
+    
+    @OneToMany(mappedBy = "pecas") //Anotacao para associacao
+    private List<Pecas> pecas = new ArrayList<>();
 
     //CONSTRUCTOR
     public Servico() {
     }
 
     //CONSTRUCTOR
-    public Servico(Integer id, String descricao, Long preco, Date dataServico, Long km, Mecanico mecanico) {
+    public Servico(Integer id, String descricao, Long preco, Date dataServico, Long km, Mecanico mecanico, Carro carro) {
         this.id = id;
         this.descricao = descricao;
         this.preco = preco;
         this.dataServico = dataServico;
         this.km = km;
         this.mecanico = mecanico;
+        this.carro = carro;
     }
-
+    
     //EQUALS AND HASHCODE
     @Override
     public int hashCode() {
@@ -124,4 +131,20 @@ public class Servico implements Serializable {
         this.mecanico = mecanico;
     }
 
+    public Carro getCarro() {
+        return carro;
+    }
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
+
+    public List<Pecas> getPecas() {
+        return pecas;
+    }
+
+    public void setPecas(List<Pecas> pecas) {
+        this.pecas = pecas;
+    }
+    
 }
