@@ -30,6 +30,10 @@ public class Servico implements Serializable {
     @ManyToOne //Anotacao para associacao
     @JoinColumn(name = "mecanicoId")
     private Mecanico mecanico;
+    
+    @ManyToOne //Anotacao para associacao
+    @JoinColumn(name = "carroId")
+    private Carro carro;
 
     //CONSTRUCTOR
     public Servico() {
