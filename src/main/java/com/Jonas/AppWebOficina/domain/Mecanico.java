@@ -1,12 +1,15 @@
 package com.Jonas.AppWebOficina.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -31,6 +34,9 @@ public class Mecanico implements Serializable {
     private Integer telefone;
     private String adicionais;
     private Date dataCriacao;
+    
+    @OneToMany(mappedBy = "mecanico") //Anotacao para associacao
+    private List<Servico> servicos = new ArrayList<>();
 
     //CONSTRUCTOR
     public Mecanico() {
@@ -164,4 +170,12 @@ public class Mecanico implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
+    public List<Servico> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
+    }
+    
 }
