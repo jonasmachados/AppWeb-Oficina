@@ -1,14 +1,11 @@
 package com.Jonas.AppWebOficina.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,20 +22,17 @@ public class Carro implements Serializable {
     private String modelo;
     private String marca;
     private Integer ano;
-    private Long chassi;
-    private Long Renavan;
+    private String chassi;
+    private String Renavan;
     private String cor;
     private String combustivel;
-
-    @OneToMany(mappedBy = "carro") //Anotacao para associacao
-    private List<Servico> servicos = new ArrayList<>();
 
     //CONSTRUCTOR
     public Carro() {
     }
 
     //CONSTRUCTOR
-    public Carro(Integer id, String modelo, String marca, Integer ano, Long chassi, Long Renavan, String cor, String combustivel) {
+    public Carro(Integer id, String modelo, String marca, Integer ano, String chassi, String Renavan, String cor, String combustivel) {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
@@ -108,19 +102,19 @@ public class Carro implements Serializable {
         this.ano = ano;
     }
 
-    public Long getChassi() {
+    public String getChassi() {
         return chassi;
     }
 
-    public void setChassi(Long chassi) {
+    public void setChassi(String chassi) {
         this.chassi = chassi;
     }
 
-    public Long getRenavan() {
+    public String getRenavan() {
         return Renavan;
     }
 
-    public void setRenavan(Long Renavan) {
+    public void setRenavan(String Renavan) {
         this.Renavan = Renavan;
     }
 
@@ -138,14 +132,6 @@ public class Carro implements Serializable {
 
     public void setCombustivel(String combustivel) {
         this.combustivel = combustivel;
-    }
-
-    public List<Servico> getServicos() {
-        return servicos;
-    }
-
-    public void setServicos(List<Servico> servicos) {
-        this.servicos = servicos;
     }
 
 }

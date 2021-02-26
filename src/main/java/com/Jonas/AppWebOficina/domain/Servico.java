@@ -26,9 +26,9 @@ public class Servico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
-    private Long preco;
+    private Double preco;
     private Date dataServico;
-    private Long km;
+    private Double km;
     
     @ManyToOne //Anotacao para associacao
     @JoinColumn(name = "mecanicoId")
@@ -38,15 +38,15 @@ public class Servico implements Serializable {
     @JoinColumn(name = "carroId")
     private Carro carro;
     
-    @OneToMany(mappedBy = "pecas") //Anotacao para associacao
+    @OneToMany //Anotacao para associacao
     private List<Pecas> pecas = new ArrayList<>();
-
+    
     //CONSTRUCTOR
     public Servico() {
     }
 
     //CONSTRUCTOR
-    public Servico(Integer id, String descricao, Long preco, Date dataServico, Long km, Mecanico mecanico, Carro carro) {
+    public Servico(Integer id, String descricao, Double preco, Date dataServico, Double km, Mecanico mecanico, Carro carro) {
         this.id = id;
         this.descricao = descricao;
         this.preco = preco;
@@ -55,7 +55,8 @@ public class Servico implements Serializable {
         this.mecanico = mecanico;
         this.carro = carro;
     }
-    
+   
+     
     //EQUALS AND HASHCODE
     @Override
     public int hashCode() {
@@ -99,11 +100,11 @@ public class Servico implements Serializable {
         this.descricao = descricao;
     }
 
-    public Long getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(Long preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
@@ -115,11 +116,11 @@ public class Servico implements Serializable {
         this.dataServico = dataServico;
     }
 
-    public Long getKm() {
+    public Double getKm() {
         return km;
     }
 
-    public void setKm(Long km) {
+    public void setKm(Double km) {
         this.km = km;
     }
 

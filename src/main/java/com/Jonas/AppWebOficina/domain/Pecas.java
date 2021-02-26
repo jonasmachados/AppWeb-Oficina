@@ -1,12 +1,13 @@
 package com.Jonas.AppWebOficina.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.xml.crypto.Data;
+
 
 /**
  *
@@ -21,15 +22,15 @@ public class Pecas implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String Descricao;
-    private Data dataCompra;
-    private Long preco;
+    private Date dataCompra;
+    private Double preco;
 
     //COSNTRUCTOR
     public Pecas() {
     }
 
     //COSNTRUCTOR
-    public Pecas(Integer id, String Descricao, Data dataCompra, Long preco) {
+    public Pecas(Integer id, String Descricao, Date dataCompra, Double preco) {
         this.id = id;
         this.Descricao = Descricao;
         this.dataCompra = dataCompra;
@@ -79,19 +80,19 @@ public class Pecas implements Serializable {
         this.Descricao = Descricao;
     }
 
-    public Data getDataCompra() {
+    public Date getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(Data dataCompra) {
+    public void setDataCompra(Date dataCompra) {
         this.dataCompra = dataCompra;
     }
 
-    public Long getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(Long preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 

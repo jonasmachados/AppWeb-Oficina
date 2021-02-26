@@ -25,8 +25,8 @@ public class Mecanico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String razaoSocial;
-    private Long cpf_Cnpj;
-    private Long cep;
+    private Integer cpf_Cnpj;
+    private String cep;
     private String endereco;
     private Integer numero;
     private String bairro;
@@ -43,7 +43,7 @@ public class Mecanico implements Serializable {
     }
 
     //CONSTRUCTOR
-    public Mecanico(Integer id, String razaoSocial, Long cpf_Cnpj, Long cep, String endereco, Integer numero, String bairro, String cidade, Integer telefone) {
+    public Mecanico(Integer id, String razaoSocial, Integer cpf_Cnpj, String cep, String endereco, Integer numero, String bairro, String cidade, Integer telefone, String adicionais, Date dataCriacao) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cpf_Cnpj = cpf_Cnpj;
@@ -53,8 +53,10 @@ public class Mecanico implements Serializable {
         this.bairro = bairro;
         this.cidade = cidade;
         this.telefone = telefone;
+        this.adicionais = adicionais;
+        this.dataCriacao = dataCriacao;
     }
-
+    
     //HASH CODE E EQUALS
     @Override
     public int hashCode() {
@@ -98,19 +100,19 @@ public class Mecanico implements Serializable {
         this.razaoSocial = razaoSocial;
     }
 
-    public Long getCpf_Cnpj() {
+    public Integer getCpf_Cnpj() {
         return cpf_Cnpj;
     }
 
-    public void setCpf_Cnpj(Long cpf_Cnpj) {
+    public void setCpf_Cnpj(Integer cpf_Cnpj) {
         this.cpf_Cnpj = cpf_Cnpj;
     }
 
-    public Long getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(Long cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
