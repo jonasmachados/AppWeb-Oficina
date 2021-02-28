@@ -1,5 +1,6 @@
 package com.Jonas.AppWebOficina.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,6 +36,7 @@ public class Mecanico implements Serializable {
     private String adicionais;
     private Date dataCriacao;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "mecanico") //Anotacao para associacao
     private List<Servico> servicos = new ArrayList<>();
 

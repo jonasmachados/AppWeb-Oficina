@@ -1,5 +1,6 @@
 package com.Jonas.AppWebOficina.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,18 +30,18 @@ public class Servico implements Serializable {
     private Double preco;
     private Date dataServico;
     private Double km;
-    
+
     @ManyToOne //Anotacao para associacao
     @JoinColumn(name = "mecanicoId")
     private Mecanico mecanico;
-    
+
     @ManyToOne //Anotacao para associacao
     @JoinColumn(name = "carroId")
     private Carro carro;
-    
+
     @OneToMany //Anotacao para associacao
     private List<Pecas> pecas = new ArrayList<>();
-    
+
     //CONSTRUCTOR
     public Servico() {
     }
@@ -55,8 +56,7 @@ public class Servico implements Serializable {
         this.mecanico = mecanico;
         this.carro = carro;
     }
-   
-     
+
     //EQUALS AND HASHCODE
     @Override
     public int hashCode() {
@@ -147,5 +147,5 @@ public class Servico implements Serializable {
     public void setPecas(List<Pecas> pecas) {
         this.pecas = pecas;
     }
-    
+
 }
