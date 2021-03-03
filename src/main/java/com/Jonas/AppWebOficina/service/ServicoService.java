@@ -27,4 +27,9 @@ public class ServicoService {
     public List<Servico> findAll() {
         return repository.findAll();
     }
+    
+    public Servico create(Servico obj){
+        obj.setId(null);
+        return repository.save(obj);
+    }
 }
