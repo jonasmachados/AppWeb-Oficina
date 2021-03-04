@@ -1,6 +1,7 @@
 package com.Jonas.AppWebOficina.service;
 
 import com.Jonas.AppWebOficina.domain.Servico;
+import com.Jonas.AppWebOficina.dtos.ServicoDTO;
 import com.Jonas.AppWebOficina.repositories.ServicoRepository;
 import java.util.List;
 import java.util.Optional;
@@ -27,9 +28,19 @@ public class ServicoService {
     public List<Servico> findAll() {
         return repository.findAll();
     }
-    
-    public Servico create(Servico obj){
+
+    public Servico create(Servico obj) {
         obj.setId(null);
         return repository.save(obj);
     }
+
+    public Servico update(Integer id, ServicoDTO objDto) throws ObjectNotFoundException {
+        Servico obj = findById(id);
+        obj.setDescricao(objDto.getDescricao());
+        obj.setPreco(objDto.getPreco());
+        obj.setDataServico(objDto.getDataServico());
+        obj.setKm(objDto.getKm());
+        return repository.save(obj);
+    }
+
 }
