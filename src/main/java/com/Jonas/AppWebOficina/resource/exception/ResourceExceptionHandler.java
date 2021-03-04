@@ -1,6 +1,6 @@
 package com.Jonas.AppWebOficina.resource.exception;
 
-import javassist.tools.rmi.ObjectNotFoundException;
+import com.Jonas.AppWebOficina.service.exceptions.ObjectNotFoundException;
 import javax.servlet.ServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
