@@ -7,6 +7,7 @@ import com.Jonas.AppWebOficina.service.exceptions.ObjectNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,7 +20,7 @@ public class ServicoService {
     @Autowired
     private ServicoRepository repository;
 
-    public Servico findById(Integer id){
+    public Servico findById(Integer id) {
         Optional<Servico> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Servico.class.getName()));
     }
@@ -33,7 +34,7 @@ public class ServicoService {
         return repository.save(obj);
     }
 
-    public Servico update(Integer id, ServicoDTO objDto){
+    public Servico update(Integer id, ServicoDTO objDto) {
         Servico obj = findById(id);
         obj.setDescricao(objDto.getDescricao());
         obj.setPreco(objDto.getPreco());
@@ -42,8 +43,14 @@ public class ServicoService {
         return repository.save(obj);
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         findById(id);
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new com.Jonas.AppWebOficina.service.exceptions.DataIntegrityViolationException(
+                    "Categoria não pode ser deletada! Possui livros associados");
+        }
+
     }
 }
