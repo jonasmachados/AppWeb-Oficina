@@ -45,4 +45,8 @@ public class CarroService {
         newObj.setCombustivel(obj.getCombustivel());
     }
 
+    public Carro create(Carro obj) {
+        return repository.save(obj);
+    }
+
 }
