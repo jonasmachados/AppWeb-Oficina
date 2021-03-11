@@ -3,6 +3,8 @@ package com.Jonas.AppWebOficina.dtos;
 import com.Jonas.AppWebOficina.domain.Servico;
 import java.io.Serializable;
 import java.util.Date;
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -13,7 +15,11 @@ public class ServicoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+
+    @NotEmpty(message = "Descricao é requerido/ Description is required")
+    @Length(min = 5, max = 40, message = "Descricao nao pode ser nullo/ Description dont can be null")
     private String descricao;
+
     private Double preco;
     private Date dataServico;
     private Double km;

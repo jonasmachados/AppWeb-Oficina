@@ -1,7 +1,6 @@
 package com.Jonas.AppWebOficina.config;
 
 import com.Jonas.AppWebOficina.service.DBService;
-import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +23,7 @@ public class DevConfig {
 	private String strategy;
 
     @Bean
-	public boolean instanciaBaseDeDados() throws ParseException {
+	public boolean instanciaBaseDeDados() throws Exception {
 		if(strategy.equals("create")) {
 			this.dbService.instanciaBaseDeDados();
 		}

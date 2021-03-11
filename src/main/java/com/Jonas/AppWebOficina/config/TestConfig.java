@@ -1,7 +1,6 @@
 package com.Jonas.AppWebOficina.config;
 
 import com.Jonas.AppWebOficina.service.DBService;
-import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +19,7 @@ public class TestConfig {
 
     //Method that will go make dependency injection
     @Bean
-    public void instanciaBaseDeDados() throws ParseException {
+    public void instanciaBaseDeDados() throws Exception{
         this.dbService.instanciaBaseDeDados();
     }
 

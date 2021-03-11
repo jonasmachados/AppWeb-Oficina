@@ -8,7 +8,6 @@ import com.Jonas.AppWebOficina.repositories.CarroRepository;
 import com.Jonas.AppWebOficina.repositories.MecanicoRepository;
 import com.Jonas.AppWebOficina.repositories.PecaRepository;
 import com.Jonas.AppWebOficina.repositories.ServicoRepository;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.TimeZone;
@@ -39,7 +38,7 @@ public class DBService {
     @Autowired
     private ServicoRepository servicoRepository;
 
-    public void instanciaBaseDeDados() throws ParseException {
+    public void instanciaBaseDeDados()throws Exception {
         //Format of date
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));

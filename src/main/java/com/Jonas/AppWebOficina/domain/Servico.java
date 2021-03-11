@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -26,7 +28,11 @@ public class Servico implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "Descricao é requerido/ Description is required")
+    @Length(min = 5, max = 40, message = "Descricao nao pode ser nullo/ Description dont can be null")
     private String descricao;
+
     private Double preco;
     private Date dataServico;
     private Double km;
