@@ -3,6 +3,8 @@ package com.Jonas.AppWebOficina.dtos;
 import com.Jonas.AppWebOficina.domain.Servico;
 import java.io.Serializable;
 import java.util.Date;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
