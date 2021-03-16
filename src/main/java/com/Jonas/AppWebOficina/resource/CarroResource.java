@@ -6,6 +6,7 @@ import com.Jonas.AppWebOficina.service.CarroService;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,19 +45,19 @@ public class CarroResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Carro> update(@PathVariable Integer id, @RequestBody Carro obj) {
+    public ResponseEntity<Carro> update(@PathVariable Integer id, @Valid @RequestBody Carro obj) {
         Carro newObj = service.update(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Carro> updatePatch(@PathVariable Integer id, @RequestBody Carro obj) {
+    public ResponseEntity<Carro> updatePatch(@PathVariable Integer id, @Valid @RequestBody Carro obj) {
         Carro newObj = service.update(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
 
     @PostMapping
-    public ResponseEntity<Carro> create(@RequestBody Carro obj) {
+    public ResponseEntity<Carro> create(@Valid @RequestBody Carro obj) {
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();

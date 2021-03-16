@@ -1,6 +1,8 @@
 package com.Jonas.AppWebOficina.dtos;
 
 import com.Jonas.AppWebOficina.domain.Carro;
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -9,7 +11,11 @@ import com.Jonas.AppWebOficina.domain.Carro;
 public class CarroDTO {
 
     private Integer id;
+
+    @NotEmpty(message = "Modelo é requerido/ Model is required")
+    @Length(min = 5, max = 40, message = "Modelo nao pode ser nullo/ Car model dont can be null")
     private String modelo;
+
     private String marca;
 
     //CONSTRUCOTR

@@ -54,7 +54,7 @@ public class ServicoResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ServicoDTO> update(@Valid @PathVariable Integer id, @RequestBody ServicoDTO objDto) {
+    public ResponseEntity<ServicoDTO> update(@PathVariable Integer id,@Valid @RequestBody ServicoDTO objDto) {
         Servico newObj = service.update(id, objDto);
         return ResponseEntity.ok().body(new ServicoDTO(newObj));
     }
