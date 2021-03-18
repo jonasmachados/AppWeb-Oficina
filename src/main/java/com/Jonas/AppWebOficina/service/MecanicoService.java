@@ -28,4 +28,8 @@ public class MecanicoService {
         return repository.findAll();
     }
 
+    public Mecanico create(Mecanico obj) {
+        return repository.save(obj);
+    }
+
 }
