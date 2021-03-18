@@ -1,7 +1,10 @@
 package com.Jonas.AppWebOficina.resource;
 
 import com.Jonas.AppWebOficina.domain.Mecanico;
+import com.Jonas.AppWebOficina.dtos.MecanicoDTO;
 import com.Jonas.AppWebOficina.service.MecanicoService;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +28,13 @@ public class MecanicoResource {
         Mecanico obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
 
+    }
+
+    @GetMapping
+    public ResponseEntity<List<MecanicoDTO>> findAll() {
+        List<Mecanico> list = service.findAll();
+        List<MecanicoDTO> listDTO = list.stream().map(obj -> new MecanicoDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 
 }

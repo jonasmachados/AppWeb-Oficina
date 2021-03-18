@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
  *
  * @author Jonas, created 21/02/2021
  */
-
 @Entity
 public class Mecanico implements Serializable {
 
@@ -35,7 +34,7 @@ public class Mecanico implements Serializable {
     private Integer telefone;
     private String adicionais;
     private Date dataCriacao;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "mecanico") //Anotacao para associacao
     private List<Servico> servicos = new ArrayList<>();
@@ -58,7 +57,7 @@ public class Mecanico implements Serializable {
         this.adicionais = adicionais;
         this.dataCriacao = dataCriacao;
     }
-    
+
     //HASH CODE E EQUALS
     @Override
     public int hashCode() {
@@ -181,5 +180,5 @@ public class Mecanico implements Serializable {
     public void setServicos(List<Servico> servicos) {
         this.servicos = servicos;
     }
-    
+
 }
