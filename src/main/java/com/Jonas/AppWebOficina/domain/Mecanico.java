@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -24,7 +26,11 @@ public class Mecanico implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "Razao Social é requerido/Company Name is required")
+    @Length(min = 3, max = 40, message = "Razao Social nao pode ser nullo/ Company Name dont can be null")
     private String razaoSocial;
+
     private Integer cpf_Cnpj;
     private String cep;
     private String endereco;
