@@ -1,8 +1,10 @@
 package com.Jonas.AppWebOficina.service;
 
+import com.Jonas.AppWebOficina.domain.Carro;
 import com.Jonas.AppWebOficina.domain.Pecas;
 import com.Jonas.AppWebOficina.repositories.PecaRepository;
 import com.Jonas.AppWebOficina.service.exceptions.ObjectNotFoundException;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +22,9 @@ public class PecaService {
     public Pecas findById(Integer id) {
         Optional<Pecas> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto nao encontrado! Id: " + id + ", Tipo: " + Pecas.class.getName()));
+    }
+    
+    public List<Pecas> findAll() {
+        return repository.findAll();
     }
 }
