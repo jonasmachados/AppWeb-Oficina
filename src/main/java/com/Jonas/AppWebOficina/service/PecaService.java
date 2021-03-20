@@ -39,4 +39,8 @@ public class PecaService {
         newObj.setDataCompra(obj.getDataCompra());
         newObj.setPreco(obj.getPreco());
     }
+    
+    public Pecas create(Pecas obj){
+        return repository.save(obj);
+    }  
 }
