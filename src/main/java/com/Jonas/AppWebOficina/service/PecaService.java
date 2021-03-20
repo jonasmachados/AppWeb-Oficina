@@ -1,6 +1,5 @@
 package com.Jonas.AppWebOficina.service;
 
-import com.Jonas.AppWebOficina.domain.Carro;
 import com.Jonas.AppWebOficina.domain.Pecas;
 import com.Jonas.AppWebOficina.repositories.PecaRepository;
 import com.Jonas.AppWebOficina.service.exceptions.ObjectNotFoundException;
@@ -23,8 +22,21 @@ public class PecaService {
         Optional<Pecas> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto nao encontrado! Id: " + id + ", Tipo: " + Pecas.class.getName()));
     }
-    
+
     public List<Pecas> findAll() {
         return repository.findAll();
+    }
+
+    public Pecas update(Integer id, Pecas obj) {
+        Pecas newObj = findById(id);
+        updateData(newObj, obj);
+        return repository.save(newObj);
+
+    }
+
+    public void updateData(Pecas newObj, Pecas obj) {
+        newObj.setDescricao(obj.getDescricao());
+        newObj.setDataCompra(obj.getDataCompra());
+        newObj.setPreco(obj.getPreco());
     }
 }
