@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -21,6 +22,9 @@ public class Pecas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "Descricao é requerido/ description is required")
+    @Length(min = 5, max = 40, message = "Descricao nao pode ser nullo/ description dont can be null")
     private String Descricao;
     private Date dataCompra;
     private Double preco;

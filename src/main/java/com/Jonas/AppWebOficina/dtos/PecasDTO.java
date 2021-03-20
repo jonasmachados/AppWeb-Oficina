@@ -12,8 +12,8 @@ public class PecasDTO {
 
     private Integer id;
 
-    @NotEmpty(message = "Modelo é requerido/ Model is required")
-    @Length(min = 5, max = 40, message = "Modelo nao pode ser nullo/ Car model dont can be null")
+    @NotEmpty(message = "Descricao é requerido/ description is required")
+    @Length(min = 5, max = 40, message = "Descricao nao pode ser nullo/ description dont can be null")
     private String Descricao;
 
     private Double preco;
